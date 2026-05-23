@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Up | Muay Thai & Personal Training – Twickenham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:     #050505;
+  --surface: #090909;
+  --card:    #0e0e0e;
+  --lift:    #141414;
+  --green:   #1aff7a;
+  --green-mid: #0fd663;
+  --green-pale: rgba(26,255,122,0.06);
+  --green-line: rgba(26,255,122,0.12);
+  --off-white: #ede9e0;
+  --text:    rgba(237,233,224,0.88);
+  --muted:   rgba(237,233,224,0.42);
+  --faint:   rgba(237,233,224,0.18);
+  --rule:    rgba(255,255,255,0.06);
+  --r:       8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grain — lighter than before */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  opacity: .28;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.06'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: padding .3s ease, background .3s ease, border-color .3s ease;
+  border-bottom: 1px solid transparent;
+}
+nav.stuck {
+  padding: 16px 60px;
+  background: rgba(5,5,5,.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom-color: var(--rule);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 18px; letter-spacing: .5px;
+  color: var(--off-white); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--green);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: var(--green);
+  font-family: 'Syne', sans-serif;
+  flex-shrink: 0;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 13.5px; font-weight: 400; letter-spacing: .1px;
+  color: var(--muted); text-decoration: none; transition: color .18s;
+}
+.nav-links a:hover { color: var(--off-white); }
+.nav-cta {
+  display: inline-block;
+  background: var(--green); color: var(--ink) !important;
+  font-weight: 600 !important; font-size: 13px !important;
+  padding: 10px 22px; border-radius: var(--r);
+  transition: opacity .18s, transform .15s !important;
+  letter-spacing: .2px !important;
+}
+.nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  display: grid; grid-template-columns: 55% 45%;
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; pointer-events: none;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,255,122,.09) 0%, transparent 68%);
+  top: -80px; right: -60px;
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.hero-l {
+  padding: 160px 60px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+}
+.hero-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 32px;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: fadeup .6s .1s forwards;
+}
+.hero-label::before { content: ''; width: 24px; height: 1px; background: currentColor; }
+
+.hero-h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(56px, 6.5vw, 86px);
+  font-weight: 400; line-height: 1.06;
+  letter-spacing: -.5px;
+  margin-bottom: 32px;
+  opacity: 0; animation: fadeup .6s .22s forwards;
+}
+.hero-h1 em {
+  font-style: italic; color: var(--green);
+}
+.hero-h1 .light { color: var(--muted); font-style: normal; }
+
+.hero-body {
+  font-size: 16.5px; line-height: 1.78; color: var(--muted);
+  max-width: 420px; margin-bottom: 48px;
+  opacity: 0; animation: fadeup .6s .34s forwards;
+}
+.hero-body strong { color: var(--text); font-weight: 500; }
+
+.hero-btns {
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: fadeup .6s .46s forwards;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  padding: 15px 28px; border-radius: var(--r);
+  text-decoration: none; border: none; cursor: pointer;
+  transition: opacity .18s, transform .15s, box-shadow .2s;
+}
+.btn-primary:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(26,255,122,.28); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--muted); font-size: 14px; font-weight: 400;
+  text-decoration: none; padding: 15px 4px; transition: color .18s;
+}
+.btn-secondary:hover { color: var(--off-white); }
+.btn-arr { transition: transform .18s; display: inline-block; }
+.btn-primary:hover .btn-arr, .btn-secondary:hover .btn-arr { transform: translateX(3px); }
+
+.hero-stats {
+  display: flex; gap: 0; margin-top: 64px; padding-top: 40px;
+  border-top: 1px solid var(--rule);
+  opacity: 0; animation: fadeup .6s .58s forwards;
+}
+.hstat {
+  padding-right: 44px; margin-right: 44px;
+  border-right: 1px solid var(--rule);
+}
+.hstat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+.hstat-n {
+  font-family: 'Instrument Serif', serif;
+  font-size: 40px; line-height: 1; color: var(--off-white);
+}
+.hstat-n span { color: var(--green); }
+.hstat-l { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* hero right — photo */
+.hero-r { position: relative; overflow: hidden; }
+.hero-photo {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, var(--ink) 0%, rgba(5,5,5,.12) 30%, transparent 60%),
+    url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1000&q=82&fit=crop') center/cover no-repeat;
+}
+.hero-photo-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(5,5,5,.15) 0%, rgba(5,5,5,.5) 100%);
+}
+
+/* floating info card */
+.hero-card {
+  position: absolute; bottom: 80px; left: -20px;
+  background: rgba(9,9,9,.75);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--green-line);
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.55);
+  animation: fadeup .6s .9s forwards, drift 5s 1.5s ease-in-out infinite;
+  opacity: 0;
+}
+.hcard-icon { font-size: 26px; line-height: 1; }
+.hcard-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 500; }
+.hcard-val { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-top: 3px; color: var(--off-white); }
+
+.hero-badge {
+  position: absolute; top: 28%; right: 24px;
+  background: rgba(9,9,9,.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--green-line);
+  border-radius: 10px; padding: 14px 18px; text-align: center;
+  animation: fadeup .6s 1.05s forwards; opacity: 0;
+}
+.hbadge-l { font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 500; }
+.hbadge-v { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 700; margin-top: 5px; line-height: 1.5; }
+
+/* ── DIVIDER MARQUEE ── */
+.marquee-wrap {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 0; overflow: hidden;
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 36s linear infinite; }
+.marquee-item {
+  font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--faint); white-space: nowrap;
+  padding: 0 40px; display: flex; align-items: center; gap: 40px;
+}
+.marquee-sep { width: 3px; height: 3px; background: var(--green-line); border-radius: 50%; flex-shrink: 0; }
+
+/* ── SHARED LAYOUT ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
+.section-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-tag::before { content: ''; width: 18px; height: 1px; background: currentColor; }
+.h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(38px, 4.2vw, 56px);
+  font-weight: 400; line-height: 1.1; letter-spacing: -.3px;
+}
+.h2 em { font-style: italic; color: var(--green); }
+.body-text { font-size: 16px; line-height: 1.82; color: var(--muted); }
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+.d1 { transition-delay: .07s; } .d2 { transition-delay: .14s; }
+.d3 { transition-delay: .21s; } .d4 { transition-delay: .28s; }
+
+/* ── ABOUT ── */
+.about { padding: 120px 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+.img-stack { position: relative; height: 520px; }
+.img-main {
+  position: absolute; top: 0; left: 0; width: 74%; height: 78%;
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 28px 72px rgba(0,0,0,.65);
+}
+.img-accent {
+  position: absolute; bottom: 0; right: 0; width: 54%; height: 52%;
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0,0,0,.6);
+  border: 3px solid var(--ink);
+}
+.img-main img, .img-accent img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: brightness(.88) saturate(.92);
+  transition: filter .5s, transform .7s;
+}
+.img-main:hover img, .img-accent:hover img {
+  filter: brightness(.96) saturate(1.04); transform: scale(1.03);
+}
+.img-pill {
+  position: absolute; top: 40%; left: 62%; z-index: 3;
+  background: rgba(9,9,9,.78);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--green-line); border-radius: 100px;
+  padding: 10px 18px; display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.5);
+}
+.pill-n { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--green); }
+.pill-t { font-size: 11px; color: var(--muted); line-height: 1.45; }
+
+.about-text { display: flex; flex-direction: column; }
+.about-body { font-size: 16px; line-height: 1.85; color: var(--muted); margin: 24px 0 32px; }
+.about-body strong { color: var(--text); font-weight: 500; }
+.check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; color: rgba(237,233,224,.7); line-height: 1.5;
+}
+.check-icon {
+  width: 20px; height: 20px; min-width: 20px; margin-top: 1px;
+  border: 1px solid var(--green-line); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9.5px; color: var(--green); flex-shrink: 0;
+}
+
+/* ── CLASSES ── */
+.classes { padding: 120px 0; background: var(--surface); }
+.classes-intro {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: end; margin-bottom: 56px;
+}
+.class-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+}
+.class-card {
+  background: var(--card); padding: 32px 28px;
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  transition: background .25s;
+}
+.class-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5px;
+  background: var(--green); transform: scaleX(0); transform-origin: left;
+  transition: transform .35s ease;
+}
+.class-card:hover { background: var(--lift); }
+.class-card:hover::after { transform: scaleX(1); }
+.class-card:hover .class-img img { transform: scale(1.05); filter: brightness(.85); }
+.class-card:hover .c-arrow { opacity: 1; transform: translate(0,0); }
+.class-img {
+  width: 100%; height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 20px;
+}
+.class-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s, filter .3s; }
+.class-num { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); margin-bottom: 9px; font-weight: 500; }
+.class-title { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; margin-bottom: 10px; letter-spacing: -.1px; }
+.class-desc { font-size: 13.5px; color: var(--muted); line-height: 1.72; flex: 1; }
+.class-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.class-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ctag {
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;
+  color: var(--muted); border: 1px solid var(--rule); padding: 3px 7px; border-radius: 4px;
+}
+.c-arrow { font-size: 15px; color: var(--green); opacity: 0; transform: translate(-5px, 3px); transition: opacity .22s, transform .22s; }
+
+/* ── STATS STRIP ── */
+.stats-strip { padding: 72px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-cell {
+  padding: 0 40px; border-right: 1px solid var(--rule);
+  transition: background .25s;
+}
+.stat-cell:first-child { padding-left: 0; }
+.stat-cell:last-child { border-right: none; padding-right: 0; }
+.stat-n {
+  font-family: 'Instrument Serif', serif; font-size: 50px;
+  line-height: 1; color: var(--off-white); margin-bottom: 8px;
+}
+.stat-n span { color: var(--green); }
+.stat-l { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+/* ── COACHES ── */
+.coaches { padding: 120px 0; background: var(--surface); }
+.coach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+.coach-card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 12px; overflow: hidden;
+  display: grid; grid-template-columns: 188px 1fr;
+  transition: border-color .25s;
+}
+.coach-card:hover { border-color: var(--green-line); }
+.coach-photo { position: relative; overflow: hidden; }
+.coach-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  filter: brightness(.82) saturate(.88); transition: filter .4s;
+  display: block;
+}
+.coach-card:hover .coach-photo img { filter: brightness(.92) saturate(.98); }
+.coach-photo-fade { position: absolute; inset: 0; background: linear-gradient(to right, transparent 55%, var(--card)); }
+.coach-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--green); }
+.coach-info { padding: 30px 26px; display: flex; flex-direction: column; justify-content: center; }
+.coach-role { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 500; margin-bottom: 7px; }
+.coach-name { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; margin-bottom: 11px; }
+.coach-bio { font-size: 13px; color: var(--muted); line-height: 1.72; margin-bottom: 18px; }
+.coach-creds { display: flex; flex-direction: column; gap: 6px; }
+.coach-cred { font-size: 12.5px; color: var(--faint); display: flex; align-items: center; gap: 8px; }
+.cred-dot { width: 3px; height: 3px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+
+/* ── REVIEWS ── */
+.reviews { padding: 120px 0; }
+.reviews-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; }
+.google-mark {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: var(--r); padding: 12px 18px;
+}
+.gm-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; }
+.gm-name span { color: var(--green); }
+.gm-stars { color: #f5c518; font-size: 13px; letter-spacing: 1px; margin-top: 2px; }
+.gm-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+.rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.rev-card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 12px; padding: 30px;
+  display: flex; flex-direction: column;
+  transition: border-color .25s;
+}
+.rev-card:hover { border-color: var(--green-line); }
+.rev-quote { font-family: 'Instrument Serif', serif; font-size: 44px; color: var(--green-line); line-height: 1; margin-bottom: 12px; }
+.rev-stars { color: #f5c518; font-size: 12px; letter-spacing: 1.5px; margin-bottom: 14px; }
+.rev-text { font-size: 14.5px; line-height: 1.78; color: rgba(237,233,224,.68); margin-bottom: 22px; flex: 1; }
+.rev-author { display: flex; align-items: center; gap: 10px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.rev-initials {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  background: var(--green-pale); border: 1px solid var(--green-line);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--green);
+}
+.rev-name { font-size: 13.5px; font-weight: 500; }
+.rev-meta { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.rev-note {
+  margin-top: 18px; font-size: 12px; color: var(--faint);
+  text-align: center; line-height: 1.6;
+}
+.rev-note a { color: var(--green); text-decoration: none; }
+.rev-note a:hover { text-decoration: underline; }
+
+/* ── PRICING ── */
+.pricing { padding: 120px 0; background: var(--surface); }
+.pricing-intro { text-align: center; max-width: 500px; margin: 0 auto 56px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.price-card {
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 12px; padding: 36px 30px;
+  display: flex; flex-direction: column;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.price-card:hover { border-color: var(--green-line); transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.price-card.featured {
+  background: linear-gradient(150deg, #071208 0%, #040d05 100%);
+  border-color: rgba(26,255,122,.25);
+  box-shadow: 0 0 60px rgba(26,255,122,.06), inset 0 1px 0 rgba(26,255,122,.1);
+}
+.price-card.featured:hover { box-shadow: 0 0 80px rgba(26,255,122,.12), 0 20px 50px rgba(0,0,0,.4); }
+.price-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink); background: var(--green);
+  padding: 4px 10px; border-radius: 4px; margin-bottom: 24px; align-self: flex-start;
+}
+.price-tier { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
+.price-featured .price-tier { color: var(--green); }
+.price-amount { display: flex; align-items: flex-start; line-height: 1; margin-bottom: 6px; gap: 2px; }
+.price-sym { font-family: 'Instrument Serif', serif; font-size: 22px; color: var(--muted); padding-top: 8px; }
+.price-num { font-family: 'Instrument Serif', serif; font-size: 64px; color: var(--off-white); }
+.price-per { font-size: 12.5px; color: var(--muted); margin-bottom: 22px; }
+.price-rule { height: 1px; background: var(--rule); margin: 20px 0; }
+.price-card.featured .price-rule { background: rgba(26,255,122,.1); }
+.price-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 28px; }
+.pf { font-size: 13.5px; color: rgba(237,233,224,.65); display: flex; align-items: flex-start; gap: 9px; }
+.pf-check { color: var(--green); flex-shrink: 0; margin-top: 2px; font-size: 12px; }
+.btn-price {
+  display: block; width: 100%; padding: 13px; text-align: center; border-radius: var(--r);
+  font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 600;
+  text-decoration: none; cursor: pointer; border: none; transition: all .2s;
+}
+.btn-price-outline { background: transparent; border: 1px solid var(--rule); color: var(--text); }
+.btn-price-outline:hover { border-color: var(--green-line); color: var(--off-white); }
+.btn-price-fill { background: var(--green); color: var(--ink); }
+.btn-price-fill:hover { opacity: .88; box-shadow: 0 6px 28px rgba(26,255,122,.28); }
+
+/* ── FAQ ── */
+.faq { padding: 120px 0; }
+.faq-layout { display: grid; grid-template-columns: 1fr 1.65fr; gap: 80px; align-items: start; }
+.faq-sticky { position: sticky; top: 96px; }
+.faq-cta-block { margin-top: 40px; }
+.faq-cta-note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+.faq-cta-note a { color: var(--green); text-decoration: none; }
+
+.faq-list { border-top: 1px solid var(--rule); }
+.faq-item { border-bottom: 1px solid var(--rule); }
+.faq-q {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 0; cursor: pointer; user-select: none;
+  font-size: 15.5px; font-weight: 500; letter-spacing: -.1px;
+  transition: color .18s;
+}
+.faq-q:hover { color: var(--off-white); }
+.faq-item.open .faq-q { color: var(--off-white); }
+.faq-icon {
+  width: 24px; height: 24px; min-width: 24px; border-radius: 50%;
+  border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: var(--muted); line-height: 1;
+  transition: transform .28s ease, border-color .2s, color .2s;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--green-line); color: var(--green); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height .32s ease, padding .32s ease;
+  font-size: 14.5px; line-height: 1.8; color: var(--muted); padding-right: 32px;
+}
+.faq-item.open .faq-answer { max-height: 320px; padding-bottom: 20px; }
+.faq-answer strong { color: var(--text); font-weight: 500; }
+
+/* ── CTA BAND ── */
+.cta-band { padding: 96px 0; position: relative; overflow: hidden; }
+.cta-band-bg { position: absolute; inset: 0; background: linear-gradient(140deg, #030d04 0%, var(--ink) 60%, #020803 100%); }
+.cta-band-glow {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,255,122,.1) 0%, transparent 65%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.cta-band-inner { position: relative; z-index: 1; text-align: center; max-width: 660px; margin: 0 auto; padding: 0 60px; }
+.cta-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.cta-label::before, .cta-label::after { content: ''; flex: 0 0 18px; height: 1px; background: currentColor; }
+.cta-h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(40px, 5.5vw, 64px); font-weight: 400; letter-spacing: -.4px; line-height: 1.08;
+  margin-bottom: 18px;
+}
+.cta-h2 em { font-style: italic; color: var(--green); }
+.cta-p { font-size: 16.5px; color: var(--muted); line-height: 1.75; margin-bottom: 40px; }
+.cta-p strong { color: var(--text); font-weight: 500; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; align-items: center; flex-wrap: wrap; }
+.cta-proof { margin-top: 24px; font-size: 12.5px; color: var(--faint); letter-spacing: .2px; }
+.cta-proof span { color: var(--green); }
+
+/* ── CONTACT ── */
+.contact { padding: 120px 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-details { display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
+.c-detail {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: var(--r); padding: 14px 18px;
+  transition: border-color .2s;
+}
+.c-detail:hover { border-color: var(--green-line); }
+.c-detail-icon {
+  width: 36px; height: 36px; min-width: 36px; border-radius: 7px;
+  background: var(--green-pale); border: 1px solid var(--green-line);
+  display: flex; align-items: center; justify-content: center; font-size: 14px;
+}
+.c-detail-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.c-detail-val { font-size: 14px; font-weight: 400; margin-top: 2px; }
+.c-detail-val a { color: var(--text); text-decoration: none; transition: color .18s; }
+.c-detail-val a:hover { color: var(--green); }
+
+.c-form {
+  background: var(--card); border: 1px solid var(--green-line);
+  border-radius: 12px; padding: 40px;
+  position: relative; overflow: hidden;
+}
+.c-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5px; background: linear-gradient(to right, var(--green) 0%, transparent 60%); }
+.cf-title { font-family: 'Instrument Serif', serif; font-size: 26px; font-weight: 400; letter-spacing: -.2px; margin-bottom: 6px; }
+.cf-sub { font-size: 13.5px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+.cf-sub strong { color: var(--green); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+label { font-size: 10.5px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); }
+input, select, textarea {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r); color: var(--text);
+  padding: 12px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; width: 100%; appearance: none;
+  transition: border-color .18s, box-shadow .18s;
+}
+input:focus, select:focus, textarea:focus { border-color: rgba(26,255,122,.32); box-shadow: 0 0 0 3px rgba(26,255,122,.05); }
+input::placeholder, textarea::placeholder { color: rgba(237,233,224,.16); }
+textarea { resize: vertical; min-height: 88px; }
+select option { background: #111; }
+.btn-submit {
+  width: 100%; padding: 14px; margin-top: 8px;
+  background: var(--green); color: var(--ink); border: none; border-radius: var(--r);
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity .18s, transform .15s, box-shadow .2s;
+}
+.btn-submit:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(26,255,122,.28); }
+.form-note { font-size: 12px; color: var(--faint); text-align: center; margin-top: 12px; line-height: 1.55; }
+
+/* ── FOOTER ── */
+footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--rule); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+.footer-brand-logo {
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+  color: var(--off-white); margin-bottom: 14px; letter-spacing: .3px;
+  display: flex; align-items: center; gap: 9px;
+}
+.footer-brand-logo .logo-mark { width: 24px; height: 24px; font-size: 11px; }
+.footer-tagline { font-size: 13px; color: var(--muted); line-height: 1.75; max-width: 240px; margin-bottom: 22px; }
+.footer-socials { display: flex; gap: 8px; }
+.fsoc {
+  width: 32px; height: 32px; border-radius: 7px;
+  background: transparent; border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  color: var(--muted); text-decoration: none; transition: all .18s;
+}
+.fsoc:hover { border-color: var(--green-line); color: var(--green); }
+.footer-col-title { font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); font-weight: 500; margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-links a { font-size: 13.5px; color: var(--muted); text-decoration: none; transition: color .18s; }
+.footer-links a:hover { color: var(--off-white); }
+.footer-bottom { border-top: 1px solid var(--rule); padding-top: 22px; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 12px; color: var(--faint); }
+.footer-copy a { color: var(--green); text-decoration: none; transition: opacity .18s; }
+.footer-copy a:hover { opacity: .75; }
+.footer-wku {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--green); border: 1px solid var(--green-line);
+  padding: 5px 11px; border-radius: 4px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeup { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes breathe { 0%,100% { transform: scale(1) translate(0,0); } 50% { transform: scale(1.06) translate(18px, 14px); } }
+@keyframes drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes pip { 0%,100% { box-shadow: 0 0 6px var(--green); } 50% { box-shadow: 0 0 14px var(--green); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav, nav.stuck { padding: 14px 22px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-l { padding: 110px 22px 60px; }
+  .hero-r { height: 300px; }
+  .hero-card { left: 14px; bottom: 18px; }
+  .container { padding: 0 22px; }
+  .about-grid, .coach-grid, .contact-grid, .faq-layout { grid-template-columns: 1fr; gap: 44px; }
+  .img-stack { height: 320px; }
+  .img-pill { left: 52%; top: auto; bottom: 10px; }
+  .classes-intro { grid-template-columns: 1fr; }
+  .class-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 0; }
+  .stat-cell { padding: 20px 24px; }
+  .stats-strip { padding: 44px 0; }
+  .coach-card { grid-template-columns: 1fr; }
+  .coach-photo { height: 210px; }
+  .rev-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  footer { padding: 44px 0 22px; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-band-inner { padding: 0 22px; }
+  .faq-sticky { position: static; }
+  .reviews-head { flex-direction: column; gap: 20px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">P</div>
+    Power Up
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#coaches">Coaches</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Book Free Trial</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-l">
+    <p class="hero-label">Twickenham's home of Muay Thai</p>
+    <h1 class="hero-h1">
+      Stop<br>
+      <em>Waiting.</em><br>
+      <span class="light">Start</span><br>
+      Fighting.
+    </h1>
+    <p class="hero-body">
+      No experience needed. No fitness level required. Just show up —
+      <strong>your first session is completely free</strong> and we'll take care of the rest.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Claim Your Free Session <span class="btn-arr">→</span></a>
+      <a href="#classes" class="btn-secondary">See all classes <span class="btn-arr">↓</span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-n">30<span>+</span></div>
+        <div class="hstat-l">Years combined<br>experience</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n"><span>★ </span>5.0</div>
+        <div class="hstat-l">Google rating<br>Twickenham</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">1<span>:1</span></div>
+        <div class="hstat-l">Private sessions<br>with Sam or Liz</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-photo"></div>
+    <div class="hero-photo-veil"></div>
+    <div class="hero-card">
+      <div class="hcard-icon">🥊</div>
+      <div>
+        <div class="hcard-label">Next session</div>
+        <div class="hcard-val">Available this week</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hbadge-l">WKU Affiliated</div>
+      <div class="hbadge-v">World Kickboxing<br>& Karate Union</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBTLE MARQUEE DIVIDER -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Muay Thai<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Personal Training<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Juniors Programme<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Free First Session<span class="marquee-sep"></span></span>
+    <span class="marquee-item">WKU Belt Gradings<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Twickenham &amp; Richmond<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Sam Aminian &amp; Liz Bollinger<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Muay Thai<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Personal Training<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Juniors Programme<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Free First Session<span class="marquee-sep"></span></span>
+    <span class="marquee-item">WKU Belt Gradings<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Twickenham &amp; Richmond<span class="marquee-sep"></span></span>
+    <span class="marquee-item">Sam Aminian &amp; Liz Bollinger<span class="marquee-sep"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="img-stack reveal">
+        <div class="img-main">
+          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=700&q=82&fit=crop" alt="Muay Thai pad work" loading="lazy">
+        </div>
+        <div class="img-accent">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80&fit=crop" alt="Group training" loading="lazy">
+        </div>
+        <div class="img-pill">
+          <div class="pill-n">★ 5.0</div>
+          <div class="pill-t">Google Reviews<br>Twickenham</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-tag reveal">Our story</p>
+        <h2 class="h2 reveal d1">Built by fighters.<br><em>For everyone.</em></h2>
+        <p class="about-body reveal d2">
+          Power Up was founded by <strong>Sam Aminian and Liz Bollinger</strong> — a husband-and-wife team with over 30 years of Muay Thai experience between them. After years coaching across London, they set up on Heath Road in Twickenham with one mission: <strong>to build the gym they always wished existed.</strong>
+          <br><br>
+          Welcoming. Authentic. Results-driven. Whether you've never thrown a punch or you've competed for years, you belong here.
+        </p>
+        <ul class="check-list reveal d3">
+          <li class="check-item"><div class="check-icon">✓</div>Authentic Muay Thai — not watered-down kickboxing</li>
+          <li class="check-item"><div class="check-icon">✓</div>Dedicated junior sessions for kids of all ages</li>
+          <li class="check-item"><div class="check-icon">✓</div>Official WKU belt gradings held on-site</li>
+          <li class="check-item"><div class="check-icon">✓</div>Private 1-on-1 sessions with Sam or Liz personally</li>
+          <li class="check-item"><div class="check-icon">✓</div>Nutrition guidance included with PT packages</li>
+        </ul>
+        <a href="#contact" class="btn-primary reveal d4" style="align-self:flex-start">Book a Free Trial <span class="btn-arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSES -->
+<section class="classes" id="classes">
+  <div class="container">
+    <div class="classes-intro">
+      <div>
+        <p class="section-tag reveal">What we offer</p>
+        <h2 class="h2 reveal d1">Every class.<br><em>Every level.</em></h2>
+      </div>
+      <div class="reveal d2">
+        <p class="body-text" style="max-width:360px">From your first session to competitive training — we have a programme built around where you are right now.</p>
+        <a href="#contact" class="btn-primary" style="display:inline-flex;margin-top:20px">Book Free Trial <span class="btn-arr">→</span></a>
+      </div>
+    </div>
+    <div class="class-grid reveal">
+      <div class="class-card">
+        <div class="class-img"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=75&fit=crop" alt="Private Muay Thai" loading="lazy"></div>
+        <div class="class-num">01</div>
+        <div class="class-title">Private Muay Thai</div>
+        <p class="class-desc">One-to-one with Sam or Liz — fully focused on your goals, your technique, your pace. The fastest way to improve.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">1-on-1</span></div><span class="c-arrow">→</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=75&fit=crop" alt="Group Classes" loading="lazy"></div>
+        <div class="class-num">02</div>
+        <div class="class-title">Group Classes</div>
+        <p class="class-desc">High-energy pad work, combinations and conditioning alongside a community that pushes you further than training alone ever could.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">Community</span></div><span class="c-arrow">→</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-img"><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=600&q=75&fit=crop" alt="Juniors" loading="lazy"></div>
+        <div class="class-num">03</div>
+        <div class="class-title">Juniors Programme</div>
+        <p class="class-desc">Safe, structured sessions building confidence, discipline and fitness in young people. Skills that carry into every corner of their lives.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">Kids</span><span class="ctag">All ages</span></div><span class="c-arrow">→</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-img"><img src="https://images.unsplash.com/photo-1517963628607-235ccdd5476c?w=600&q=75&fit=crop" alt="Personal Training" loading="lazy"></div>
+        <div class="class-num">04</div>
+        <div class="class-title">Personal Training</div>
+        <p class="class-desc">Goal-driven conditioning for weight loss, strength, or athletic performance. No Muay Thai required — just results.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">Goals-based</span></div><span class="c-arrow">→</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-img"><img src="https://images.unsplash.com/photo-1485872299829-c673f5194813?w=600&q=75&fit=crop" alt="Belt Gradings" loading="lazy"></div>
+        <div class="class-num">05</div>
+        <div class="class-title">WKU Belt Gradings</div>
+        <p class="class-desc">A clear progression pathway through the World Kickboxing & Karate Union system — held right here at Power Up.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">WKU</span><span class="ctag">All ages</span></div><span class="c-arrow">→</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-img"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=75&fit=crop" alt="Nutrition" loading="lazy"></div>
+        <div class="class-num">06</div>
+        <div class="class-title">Nutrition Guidance</div>
+        <p class="class-desc">Practical nutrition support included with PT packages. Eat to fuel your training, recover faster, and feel the difference.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">PT add-on</span><span class="ctag">Lifestyle</span></div><span class="c-arrow">→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-row reveal">
+      <div class="stat-cell">
+        <div class="stat-n">30<span>+</span></div>
+        <div class="stat-l">Years of combined Muay Thai coaching experience</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n"><span>★ </span>5.0</div>
+        <div class="stat-l">Average Google rating from Twickenham members</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">All<span> ages</span></div>
+        <div class="stat-l">From 6 to 60+ — everyone is welcome here</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">1<span>st</span></div>
+        <div class="stat-l">Session free — no commitment, no card required</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section class="coaches" id="coaches">
+  <div class="container">
+    <p class="section-tag reveal">Your coaches</p>
+    <h2 class="h2 reveal d1">You train with the<br><em>founders. Always.</em></h2>
+    <p class="body-text reveal d2" style="max-width:500px;margin-top:16px">Every session at Power Up is led by Sam or Liz personally — not handed off to a junior coach.</p>
+    <div class="coach-grid">
+      <div class="coach-card reveal d1">
+        <div class="coach-photo">
+          <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=400&q=80&fit=crop&crop=top" alt="Sam Aminian">
+          <div class="coach-photo-fade"></div>
+          <div class="coach-accent"></div>
+        </div>
+        <div class="coach-info">
+          <div class="coach-role">Co-founder & Head Coach</div>
+          <div class="coach-name">Sam Aminian</div>
+          <p class="coach-bio">A lifelong martial artist with 15+ years coaching Muay Thai across London. Sam's sessions are built on authentic technique, real pad work, and the belief that discipline changes lives.</p>
+          <div class="coach-creds">
+            <div class="coach-cred"><span class="cred-dot"></span>15+ years Muay Thai coaching</div>
+            <div class="coach-cred"><span class="cred-dot"></span>WKU Certified Head Coach</div>
+            <div class="coach-cred"><span class="cred-dot"></span>Competitive adult training specialist</div>
+          </div>
+        </div>
+      </div>
+      <div class="coach-card reveal d2">
+        <div class="coach-photo">
+          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&q=80&fit=crop&crop=top" alt="Liz Bollinger">
+          <div class="coach-photo-fade"></div>
+          <div class="coach-accent"></div>
+        </div>
+        <div class="coach-info">
+          <div class="coach-role">Co-founder & Coach</div>
+          <div class="coach-name">Liz Bollinger</div>
+          <p class="coach-bio">Liz specialises in making Muay Thai genuinely accessible — for beginners, juniors, and anyone who's ever felt intimidated by a combat gym. Her sessions build confidence as fast as fitness.</p>
+          <div class="coach-creds">
+            <div class="coach-cred"><span class="cred-dot"></span>15+ years Muay Thai coaching</div>
+            <div class="coach-cred"><span class="cred-dot"></span>WKU Certified Coach</div>
+            <div class="coach-cred"><span class="cred-dot"></span>Kids & beginners specialist</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <p class="section-tag reveal">What members say</p>
+        <h2 class="h2 reveal d1">Don't take our<br><em>word for it.</em></h2>
+      </div>
+      <div class="google-mark reveal d2">
+        <div>
+          <div class="gm-name">G<span>oogle</span> Reviews</div>
+          <div class="gm-stars">★★★★★</div>
+          <div class="gm-sub">5.0 · Twickenham</div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal d1">
+        <div class="rev-quote">"</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">Sam and Liz are honestly the best! They're such great coaches who genuinely care about helping you improve your technique and get the most out of every session. Their workouts are seriously humbling in the best way — they push you just enough and you always leave feeling accomplished with those endorphins flowing! If you're looking for trainers who are knowledgeable, motivating, and actually invested in your progress, I can't recommend Sam and Liz enough. 100% recommend!</p>
+        <div class="rev-author">
+          <div class="rev-initials">AJ</div>
+          <div>
+            <div class="rev-name">Ashley Journet</div>
+            <div class="rev-meta">Local Guide · 2 months ago · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal d2">
+        <div class="rev-quote">"</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">My 15 year old son has been having Muay Thai lessons with Power Up for a couple of years now. He absolutely loves his sessions. They have taught him discipline, techniques and how to fight confidently in a professional and friendly manner. Sam's patience and support has been outstanding and the whole team have supported his journey so far. Would highly recommend!</p>
+        <div class="rev-author">
+          <div class="rev-initials">KB</div>
+          <div>
+            <div class="rev-name">Karina Di Benedetto</div>
+            <div class="rev-meta">2 months ago · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal d3">
+        <div class="rev-quote">"</div>
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">I've been doing 1-to-1 Muay Thai sessions with Power Up Twickenham since last August and can't recommend it highly enough. I started as a complete beginner and was pretty unfit, but the progress in my technique and confidence has been huge. Both Liz and Sam are exceptional coaches — super patient and incredibly knowledgeable. Liz is especially great at breaking movements down so they actually make sense. I'd also highlight how welcoming and women-friendly the gym is, which made starting out much less intimidating.</p>
+        <div class="rev-author">
+          <div class="rev-initials">ST</div>
+          <div>
+            <div class="rev-name">SandyTravelFinds</div>
+            <div class="rev-meta">2 months ago · Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="rev-note reveal">All reviews above are real and verified on Google. <a href="https://maps.app.goo.gl/RtUhJQALCDsrUcYy6" target="_blank">See all reviews →</a></p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-intro">
+      <p class="section-tag reveal" style="justify-content:center">Pricing</p>
+      <h2 class="h2 reveal d1">No contracts.<br><em>No surprises.</em></h2>
+      <p class="body-text reveal d2" style="margin-top:14px">Pay for what you use. Cancel any time. Your first session is always free.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal d1">
+        <div class="price-tier">Drop-In</div>
+        <div class="price-amount"><span class="price-sym">£</span><span class="price-num">30</span></div>
+        <div class="price-per">per session</div>
+        <div class="price-rule"></div>
+        <p class="price-desc">Dip in whenever it suits you. No commitment, no pressure — perfect for trying us out or fitting around a busy schedule.</p>
+        <ul class="price-features">
+          <li class="pf"><span class="pf-check">✓</span>Any group class</li>
+          <li class="pf"><span class="pf-check">✓</span>All equipment provided</li>
+          <li class="pf"><span class="pf-check">✓</span>All levels welcome</li>
+        </ul>
+        <a href="#contact" class="btn-price btn-price-outline">Book a Session</a>
+      </div>
+      <div class="price-card featured reveal d2">
+        <div class="price-badge">Best value</div>
+        <div class="price-tier" style="color:var(--green)">Monthly Membership</div>
+        <div class="price-amount"><span class="price-sym">£</span><span class="price-num">120</span></div>
+        <div class="price-per">per month · cancel anytime</div>
+        <div class="price-rule"></div>
+        <p class="price-desc">Unlimited group classes. The most popular option and the one that delivers real, lasting results.</p>
+        <ul class="price-features">
+          <li class="pf"><span class="pf-check">✓</span>Unlimited group classes</li>
+          <li class="pf"><span class="pf-check">✓</span>All levels & disciplines</li>
+          <li class="pf"><span class="pf-check">✓</span>Progress tracking</li>
+          <li class="pf"><span class="pf-check">✓</span>WKU grading eligibility</li>
+          <li class="pf"><span class="pf-check">✓</span>Community access</li>
+        </ul>
+        <a href="#contact" class="btn-price btn-price-fill">Start This Month</a>
+      </div>
+      <div class="price-card reveal d3">
+        <div class="price-tier">Private Sessions</div>
+        <div class="price-amount"><span class="price-sym">£</span><span class="price-num">65</span></div>
+        <div class="price-per">per session</div>
+        <div class="price-rule"></div>
+        <p class="price-desc">Direct access to Sam or Liz, 100% focused on you. The fastest path to better technique and specific goals.</p>
+        <ul class="price-features">
+          <li class="pf"><span class="pf-check">✓</span>1-on-1 with Sam or Liz</li>
+          <li class="pf"><span class="pf-check">✓</span>Fully personalised plan</li>
+          <li class="pf"><span class="pf-check">✓</span>Flexible scheduling</li>
+          <li class="pf"><span class="pf-check">✓</span>Nutrition guidance included</li>
+        </ul>
+        <a href="#contact" class="btn-price btn-price-outline">Enquire Now</a>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:12.5px;color:var(--faint);margin-top:20px">Junior pricing on request. First trial session is free for all new members.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-sticky">
+        <p class="section-tag reveal">FAQ</p>
+        <h2 class="h2 reveal d1">Questions<br><em>answered.</em></h2>
+        <p class="body-text reveal d2" style="margin-top:16px;max-width:300px">Everything you need to know before booking. Still unsure? Just give us a call.</p>
+        <div class="faq-cta-block reveal d3">
+          <a href="#contact" class="btn-primary">Book Free Trial <span class="btn-arr">→</span></a>
+          <p class="faq-cta-note">Or call us: <a href="tel:07378841381">07378 841381</a></p>
+        </div>
+      </div>
+      <div class="faq-list reveal d1">
+        <div class="faq-item">
+          <div class="faq-q">Do I need any experience to join?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Absolutely not. <strong>We welcome complete beginners</strong> at every session — in fact, most of our members started with zero martial arts experience. Sam and Liz will meet you exactly where you are and build from there.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What do I wear or bring to my first session?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Just wear comfortable workout clothes — shorts and a t-shirt are perfect. <strong>All equipment is provided</strong> including gloves and hand wraps, so you don't need to bring or buy anything for your first session.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is the first session really free?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Yes — completely free, with <strong>no strings attached</strong>. No credit card, no contract, no obligation. We're confident that once you've tried a session with Sam or Liz, you'll want to come back.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What age are the junior sessions for?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Our juniors programme caters to children from around <strong>age 6 upwards</strong>. Sessions focus on confidence, discipline, coordination, and fun alongside the martial arts. Contact us to discuss your child's specific age and needs.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What's the difference between Muay Thai and kickboxing?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">Muay Thai — the <strong>"art of eight limbs"</strong> — uses fists, elbows, knees, and shins, plus clinching techniques. Regular kickboxing typically only uses punches and kicks. Muay Thai is a more complete striking system, which is why it's the foundation of most professional MMA fighters' stand-up game.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I train with an injury or health condition?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">In many cases, yes — just let us know beforehand. <strong>Sam and Liz will adapt sessions</strong> around injuries or limitations wherever possible. We'd always recommend clearing things with your GP first for serious conditions, but don't assume you can't train.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do I have to compete or spar?<span class="faq-icon">+</span></div>
+          <div class="faq-answer"><strong>Never.</strong> The vast majority of our members train purely for fitness, confidence, and enjoyment. Sparring and competition are only offered to those who actively want them — you'll never be pushed into anything you're not comfortable with.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Where exactly are you based?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">We're at <strong>156 Heath Road, Twickenham, TW1</strong>, serving members from across Twickenham, Teddington, Richmond, and the surrounding area. Get in touch and we'll send you full directions and parking info.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What are the WKU belt gradings?<span class="faq-icon">+</span></div>
+          <div class="faq-answer">The World Kickboxing & Karate Union (WKU) is one of the sport's leading governing bodies. <strong>We're fully affiliated</strong>, meaning your progress is formally recognised through an internationally respected grading system — held on-site at Power Up, for all ages.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-bg"></div>
+  <div class="cta-band-glow"></div>
+  <div class="cta-band-inner reveal">
+    <p class="cta-label">Limited spots available</p>
+    <h2 class="cta-h2">Your first session is<br><em>completely free.</em></h2>
+    <p class="cta-p">No gear. No fitness level. No excuses. Just show up and let us show you what Power Up is about. <strong>Spots fill fast</strong> — don't wait.</p>
+    <div class="cta-btns">
+      <a href="#contact" class="btn-primary" style="font-size:15px;padding:16px 36px">Book My Free Session <span class="btn-arr">→</span></a>
+      <a href="tel:07378841381" class="btn-secondary">Or call: 07378 841381</a>
+    </div>
+    <p class="cta-proof">✓ No credit card &nbsp;·&nbsp; ✓ No commitment &nbsp;·&nbsp; <span>✓ 100% free trial</span></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="section-tag reveal">Get started</p>
+        <h2 class="h2 reveal d1">Book your<br><em>free trial.</em></h2>
+        <p class="body-text reveal d2" style="margin-top:16px">Fill in the form and we'll confirm your spot within a few hours. No experience needed — just bring yourself.</p>
+        <div class="contact-details">
+          <div class="c-detail reveal d1"><div class="c-detail-icon">📍</div><div><div class="c-detail-label">Location</div><div class="c-detail-val">156 Heath Road, Twickenham, TW1</div></div></div>
+          <div class="c-detail reveal d2"><div class="c-detail-icon">📞</div><div><div class="c-detail-label">Phone</div><div class="c-detail-val"><a href="tel:07378841381">07378 841381</a> / <a href="tel:07460364200">07460 364200</a></div></div></div>
+          <div class="c-detail reveal d3"><div class="c-detail-icon">✉️</div><div><div class="c-detail-label">Email</div><div class="c-detail-val"><a href="mailto:hello@powerupgym.co.uk">hello@powerupgym.co.uk</a></div></div></div>
+          <div class="c-detail reveal d4"><div class="c-detail-icon">📱</div><div><div class="c-detail-label">Instagram</div><div class="c-detail-val"><a href="https://instagram.com/powerupgymuk" target="_blank">@powerupgymuk</a></div></div></div>
+        </div>
+      </div>
+      <div class="c-form reveal d2">
+        <div class="cf-title">Claim Your Free Session</div>
+        <p class="cf-sub">We'll confirm within <strong>a few hours</strong>. No card details. No strings.</p>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your surname"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="07700 000000"></div>
+        <div class="form-group">
+          <label>I'm interested in</label>
+          <select>
+            <option value="">Select a class or service...</option>
+            <option>Private Muay Thai (1-on-1)</option>
+            <option>Group Classes</option>
+            <option>Juniors Programme</option>
+            <option>Personal Training</option>
+            <option>WKU Belt Grading Info</option>
+            <option>Not sure yet — just want to try it</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Anything else? (optional)</label><textarea placeholder="Questions, injuries to flag, goals you'd like to share..."></textarea></div>
+        <button class="btn-submit" onclick="submitForm(this)">Book My Free Session <span>→</span></button>
+        <p class="form-note">We reply within a few hours. Your details are never shared with third parties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="logo-mark">P</div>
+          Power Up
+        </div>
+        <p class="footer-tagline">Authentic Muay Thai & personal training for all ages. Founded by Sam Aminian & Liz Bollinger in Twickenham.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/powerupgymuk" target="_blank" class="fsoc">IG</a>
+          <a href="#" class="fsoc">FB</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Classes</div>
+        <ul class="footer-links">
+          <li><a href="#classes">Private Muay Thai</a></li>
+          <li><a href="#classes">Group Classes</a></li>
+          <li><a href="#classes">Juniors Programme</a></li>
+          <li><a href="#classes">Personal Training</a></li>
+          <li><a href="#classes">WKU Belt Gradings</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#coaches">Our Coaches</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Free Trial</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">156 Heath Road</a></li>
+          <li><a href="#">Twickenham, TW1</a></li>
+          <li><a href="tel:07378841381">07378 841381</a></li>
+          <li><a href="mailto:hello@powerupgym.co.uk">hello@powerupgym.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Power Up Gym, Twickenham. All rights reserved. · Website by <a href="https://silvercode.uk" target="_blank">Silver Code Automation</a></div>
+      <div class="footer-wku">WKU Affiliated</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 60), { passive: true });
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+}, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+// Form
+function submitForm(btn) {
+  btn.textContent = '✓ Booked — we\'ll be in touch soon';
+  btn.style.background = 'var(--green-mid)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = 'Book My Free Session <span>→</span>';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 5000);
+}
+</script>
+</body>
+</html>
