@@ -247,38 +247,8 @@ nav.stuck {
 
 /* ── ABOUT ── */
 .about { padding: 120px 0; }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-grid { display: grid; grid-template-columns: 1fr; max-width: 780px; }
 
-.img-stack { position: relative; height: 520px; }
-.img-main {
-  position: absolute; top: 0; left: 0; width: 74%; height: 78%;
-  border-radius: 12px; overflow: hidden;
-  box-shadow: 0 28px 72px rgba(0,0,0,.65);
-}
-.img-accent {
-  position: absolute; bottom: 0; right: 0; width: 54%; height: 52%;
-  border-radius: 12px; overflow: hidden;
-  box-shadow: 0 20px 48px rgba(0,0,0,.6);
-  border: 3px solid var(--ink);
-}
-.img-main img, .img-accent img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: brightness(.88) saturate(.92);
-  transition: filter .5s, transform .7s;
-}
-.img-main:hover img, .img-accent:hover img {
-  filter: brightness(.96) saturate(1.04); transform: scale(1.03);
-}
-.img-pill {
-  position: absolute; top: 40%; left: 62%; z-index: 3;
-  background: rgba(9,9,9,.78);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--green-line); border-radius: 100px;
-  padding: 10px 18px; display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 8px 28px rgba(0,0,0,.5);
-}
-.pill-n { font-family: 'Geist', sans-serif; font-size: 22px; color: var(--green); }
-.pill-t { font-size: 11px; color: var(--muted); line-height: 1.45; }
 
 .about-text { display: flex; flex-direction: column; }
 .about-body { font-size: 16px; line-height: 1.85; color: var(--muted); margin: 24px 0 32px; }
@@ -597,10 +567,8 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
   .hero-r { height: 300px; }
   .hero-card { left: 14px; bottom: 18px; }
   .container { padding: 0 22px; }
-  .about-grid, .contact-grid, .faq-layout { grid-template-columns: 1fr; gap: 44px; }
-  .img-stack { height: 320px; }
-  .img-pill { left: 52%; top: auto; bottom: 10px; }
-  .classes-intro { grid-template-columns: 1fr; }
+  .contact-grid, .faq-layout { grid-template-columns: 1fr; gap: 44px; }
+      .classes-intro { grid-template-columns: 1fr; }
   .class-grid { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: 1fr 1fr; gap: 0; }
   .stat-cell { padding: 20px 24px; }
@@ -641,7 +609,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
       Stop<br>
       <em>Waiting.</em><br>
       <span class="light">Start</span><br>
-      Fighting.
+      Training
     </h1>
     <p class="hero-body">
       No experience needed. No fitness level required. Just show up —
@@ -703,32 +671,22 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
 <section class="about" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="img-stack reveal">
-        <div class="img-main">
-          <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=700&q=82&fit=crop" alt="Muay Thai pad work" loading="lazy">
-        </div>
-        <div class="img-accent">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80&fit=crop" alt="Group training" loading="lazy">
-        </div>
-        <div class="img-pill">
-          <div class="pill-n">★ 5.0</div>
-          <div class="pill-t">Google Reviews<br>Twickenham</div>
-        </div>
-      </div>
       <div class="about-text">
         <p class="section-tag reveal">Our story</p>
         <h2 class="h2 reveal d1">Built by fighters.<br><em>For everyone.</em></h2>
         <p class="about-body reveal d2">
-          Power Up was founded by <strong>Sam Aminian and Liz Bollinger</strong> — a husband-and-wife team with over 30 years of Muay Thai experience between them. After years coaching across London, they set up on Heath Road in Twickenham with one mission: <strong>to build the gym they always wished existed.</strong>
+          Hi, we're <strong>Liz and Sam</strong> — and we're so glad you're here. We've been part of the Twickenham community for a few years now, and we absolutely love it.
           <br><br>
-          Welcoming. Authentic. Results-driven. Whether you've never thrown a punch or you've competed for years, you belong here.
+          We're both private kickboxing instructors with <strong>over 30 years of combined experience</strong>, and a deep passion for helping others achieve their fitness and kickboxing goals — building strength, determination, diligence, confidence, self-respect, and respect for others along the way.
+          <br><br>
+          We believe in strong community, and love the idea of adding to it the best way we know how: <strong>getting people active and strong — body and mind.</strong> We work with both adults and kids, with opportunities for all ages.
         </p>
-        <p style="font-size:12px;color:var(--muted);margin:-10px 0 22px;letter-spacing:.1px;">✦&nbsp; WKU (World Kickboxing &amp; Karate Union) affiliated coaches</p>
         <ul class="check-list reveal d3">
           <li class="check-item"><div class="check-icon">✓</div>Authentic Muay Thai — not watered-down kickboxing</li>
           <li class="check-item"><div class="check-icon">✓</div>Dedicated junior sessions for kids of all ages</li>
           <li class="check-item"><div class="check-icon">✓</div>Private 1-on-1 sessions with Sam or Liz personally</li>
           <li class="check-item"><div class="check-icon">✓</div>Nutrition guidance included with PT packages</li>
+          <li class="check-item"><div class="check-icon" style="color:var(--green);border-color:var(--green-line);font-size:8px;">✦</div>WKU (World Kickboxing &amp; Karate Union) affiliated coaches</li>
         </ul>
         <a href="#contact" class="btn-primary reveal d4" style="align-self:flex-start">Book a Free Trial <span class="btn-arr">→</span></a>
       </div>
@@ -777,6 +735,14 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
         <div class="class-title">Personal Training</div>
         <p class="class-desc">Goal-driven conditioning for weight loss, strength, or athletic performance. No Muay Thai required — just results.</p>
         <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">Goals-based</span></div><span class="c-arrow">→</span></div>
+      </div>
+
+      <div class="class-card">
+        <div class="class-img">🏅</div>
+        <div class="class-num">05</div>
+        <div class="class-title">Belt Gradings</div>
+        <p class="class-desc">Progress through an official grading system in affiliation with the WKU (World Kickboxing &amp; Karate Union). A clear, recognised pathway for all ages.</p>
+        <div class="class-foot"><div class="class-tags"><span class="ctag">WKU</span><span class="ctag">All ages</span></div><span class="c-arrow">→</span></div>
       </div>
 
       <div class="class-card">
@@ -906,6 +872,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <li class="pf"><span class="pf-check">✓</span>All levels & disciplines</li>
           <li class="pf"><span class="pf-check">✓</span>Progress tracking</li>
           <li class="pf"><span class="pf-check">✓</span>Community access</li>
+          <li class="pf"><span class="pf-check">✓</span>WKU grading eligibility</li>
         </ul>
         <a href="#contact" class="btn-price btn-price-fill">Start This Month</a>
       </div>
@@ -1028,6 +995,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
             <option>Group Classes</option>
             <option>Juniors Programme</option>
             <option>Personal Training</option>
+            <option>WKU Belt Grading Info</option>
             <option>Not sure yet — just want to try it</option>
           </select>
         </div>
