@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Power Up | Muay Thai & Personal Training – Twickenham</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink:     #050505;
@@ -28,7 +29,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--ink);
   color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Geist', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -58,7 +59,7 @@ nav.stuck {
   border-bottom-color: var(--rule);
 }
 .logo {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Geist', sans-serif;
   font-weight: 800; font-size: 18px; letter-spacing: .5px;
   color: var(--off-white); text-decoration: none;
   display: flex; align-items: center; gap: 10px;
@@ -69,7 +70,7 @@ nav.stuck {
   border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   font-size: 13px; font-weight: 800; color: var(--green);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Geist', sans-serif;
   flex-shrink: 0;
 }
 .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
@@ -117,17 +118,17 @@ nav.stuck {
 .hero-label::before { content: ''; width: 24px; height: 1px; background: currentColor; }
 
 .hero-h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(52px, 6vw, 80px);
-  font-weight: 800; line-height: 1.04;
-  letter-spacing: -3px;
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(56px, 6.5vw, 86px);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -1.5px;
   margin-bottom: 32px;
   opacity: 0; animation: fadeup .6s .22s forwards;
 }
 .hero-h1 em {
   font-style: normal; color: var(--green); font-weight: 300;
 }
-.hero-h1 .light { color: rgba(237,233,224,.35); font-weight: 300; }
+.hero-h1 .light { color: rgba(237,233,224,.32); font-weight: 300; }
 
 .hero-body {
   font-size: 16.5px; line-height: 1.78; color: var(--muted);
@@ -143,7 +144,7 @@ nav.stuck {
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--green); color: var(--ink);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Geist', sans-serif;
   font-size: 14px; font-weight: 600;
   padding: 15px 28px; border-radius: var(--r);
   text-decoration: none; border: none; cursor: pointer;
@@ -170,8 +171,8 @@ nav.stuck {
 }
 .hstat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
 .hstat-n {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 38px; font-weight: 800; line-height: 1; color: var(--off-white);
+  font-family: 'Geist', sans-serif;
+  font-size: 36px; font-weight: 800; line-height: 1; color: var(--off-white);
 }
 .hstat-n span { color: var(--green); }
 .hstat-l { font-size: 11.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
@@ -205,19 +206,8 @@ nav.stuck {
 }
 .hcard-icon { font-size: 26px; line-height: 1; }
 .hcard-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 500; }
-.hcard-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; margin-top: 3px; color: var(--off-white); }
+.hcard-val { font-family: 'Geist', sans-serif; font-size: 15px; font-weight: 700; margin-top: 3px; color: var(--off-white); }
 
-.hero-badge {
-  position: absolute; top: 28%; right: 24px;
-  background: rgba(9,9,9,.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--green-line);
-  border-radius: 10px; padding: 14px 18px; text-align: center;
-  animation: fadeup .6s 1.05s forwards; opacity: 0;
-}
-.hbadge-l { font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); font-weight: 500; }
-.hbadge-v { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12.5px; font-weight: 700; margin-top: 5px; line-height: 1.5; }
 
 /* ── DIVIDER MARQUEE ── */
 .marquee-wrap {
@@ -242,9 +232,9 @@ nav.stuck {
 }
 .section-tag::before { content: ''; width: 18px; height: 1px; background: currentColor; }
 .h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(36px, 4vw, 54px);
-  font-weight: 700; line-height: 1.08; letter-spacing: -1px;
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(38px, 4.2vw, 56px);
+  font-weight: 700; line-height: 1.08; letter-spacing: -.8px;
 }
 .h2 em { font-style: normal; color: var(--green); font-weight: 300; }
 .body-text { font-size: 16px; line-height: 1.82; color: var(--muted); }
@@ -287,7 +277,7 @@ nav.stuck {
   padding: 10px 18px; display: flex; align-items: center; gap: 10px;
   box-shadow: 0 8px 28px rgba(0,0,0,.5);
 }
-.pill-n { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 700; color: var(--green); }
+.pill-n { font-family: 'Geist', sans-serif; font-size: 22px; color: var(--green); }
 .pill-t { font-size: 11px; color: var(--muted); line-height: 1.45; }
 
 .about-text { display: flex; flex-direction: column; }
@@ -328,14 +318,15 @@ nav.stuck {
 }
 .class-card:hover { background: var(--lift); }
 .class-card:hover::after { transform: scaleX(1); }
-.class-card:hover .class-img img { transform: scale(1.05); filter: brightness(.85); }
 .class-card:hover .c-arrow { opacity: 1; transform: translate(0,0); }
 .class-img {
-  width: 100%; height: 160px; border-radius: 8px; overflow: hidden; margin-bottom: 20px;
+  width: 50px; height: 50px; border-radius: 10px; margin-bottom: 18px;
+  background: var(--green-pale); border: 1px solid var(--green-line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; line-height: 1; flex-shrink: 0;
 }
-.class-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s, filter .3s; }
 .class-num { font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); margin-bottom: 9px; font-weight: 500; }
-.class-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; letter-spacing: -.2px; }
+.class-title { font-family: 'Geist', sans-serif; font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -.2px; }
 .class-desc { font-size: 13.5px; color: var(--muted); line-height: 1.72; flex: 1; }
 .class-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--rule); }
 .class-tags { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -355,7 +346,7 @@ nav.stuck {
 .stat-cell:first-child { padding-left: 0; }
 .stat-cell:last-child { border-right: none; padding-right: 0; }
 .stat-n {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 48px; font-weight: 800;
+  font-family: 'Geist', sans-serif; font-size: 46px; font-weight: 800;
   line-height: 1; color: var(--off-white); margin-bottom: 8px;
 }
 .stat-n span { color: var(--green); }
@@ -369,7 +360,7 @@ nav.stuck {
   background: var(--card); border: 1px solid var(--rule);
   border-radius: var(--r); padding: 12px 18px;
 }
-.gm-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; }
+.gm-name { font-family: 'Geist', sans-serif; font-size: 13px; font-weight: 700; }
 .gm-name span { color: var(--green); }
 .gm-stars { color: #f5c518; font-size: 13px; letter-spacing: 1px; margin-top: 2px; }
 .gm-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
@@ -382,7 +373,7 @@ nav.stuck {
   transition: border-color .25s;
 }
 .rev-card:hover { border-color: var(--green-line); }
-.rev-quote { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 44px; color: var(--green-line); line-height: 1; margin-bottom: 12px; }
+.rev-quote { font-family: 'Geist', sans-serif; font-size: 44px; color: var(--green-line); line-height: 1; margin-bottom: 12px; }
 .rev-stars { color: #f5c518; font-size: 12px; letter-spacing: 1.5px; margin-bottom: 14px; }
 .rev-text { font-size: 14.5px; line-height: 1.78; color: rgba(237,233,224,.68); margin-bottom: 22px; flex: 1; }
 .rev-author { display: flex; align-items: center; gap: 10px; padding-top: 18px; border-top: 1px solid var(--rule); }
@@ -390,7 +381,7 @@ nav.stuck {
   width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
   background: var(--green-pale); border: 1px solid var(--green-line);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; color: var(--green);
+  font-family: 'Geist', sans-serif; font-size: 12px; font-weight: 700; color: var(--green);
 }
 .rev-name { font-size: 13.5px; font-weight: 500; }
 .rev-meta { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
@@ -427,8 +418,8 @@ nav.stuck {
 .price-tier { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 20px; }
 .price-featured .price-tier { color: var(--green); }
 .price-amount { display: flex; align-items: flex-start; line-height: 1; margin-bottom: 6px; gap: 2px; }
-.price-sym { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 600; color: var(--muted); padding-top: 8px; }
-.price-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 60px; font-weight: 800; color: var(--off-white); }
+.price-sym { font-family: 'Geist', sans-serif; font-size: 20px; font-weight: 500; color: var(--muted); padding-top: 8px; }
+.price-num { font-family: 'Geist', sans-serif; font-size: 58px; font-weight: 800; color: var(--off-white); }
 .price-per { font-size: 12.5px; color: var(--muted); margin-bottom: 22px; }
 .price-rule { height: 1px; background: var(--rule); margin: 20px 0; }
 .price-card.featured .price-rule { background: rgba(26,255,122,.1); }
@@ -438,7 +429,7 @@ nav.stuck {
 .pf-check { color: var(--green); flex-shrink: 0; margin-top: 2px; font-size: 12px; }
 .btn-price {
   display: block; width: 100%; padding: 13px; text-align: center; border-radius: var(--r);
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13.5px; font-weight: 600;
+  font-family: 'Geist', sans-serif; font-size: 13.5px; font-weight: 600;
   text-decoration: none; cursor: pointer; border: none; transition: all .2s;
 }
 .btn-price-outline { background: transparent; border: 1px solid var(--rule); color: var(--text); }
@@ -497,8 +488,8 @@ nav.stuck {
 }
 .cta-label::before, .cta-label::after { content: ''; flex: 0 0 18px; height: 1px; background: currentColor; }
 .cta-h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(38px, 5vw, 60px); font-weight: 800; letter-spacing: -1.8px; line-height: 1.06;
+  font-family: 'Geist', sans-serif;
+  font-size: clamp(40px, 5.5vw, 64px); font-weight: 800; letter-spacing: -1.2px; line-height: 1.06;
   margin-bottom: 18px;
 }
 .cta-h2 em { font-style: normal; color: var(--green); font-weight: 300; }
@@ -535,7 +526,7 @@ nav.stuck {
   position: relative; overflow: hidden;
 }
 .c-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5px; background: linear-gradient(to right, var(--green) 0%, transparent 60%); }
-.cf-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -.4px; margin-bottom: 6px; }
+.cf-title { font-family: 'Geist', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -.3px; margin-bottom: 6px; }
 .cf-sub { font-size: 13.5px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
 .cf-sub strong { color: var(--green); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -544,7 +535,7 @@ label { font-size: 10.5px; font-weight: 500; letter-spacing: 1.5px; text-transfo
 input, select, textarea {
   background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
   border-radius: var(--r); color: var(--text);
-  padding: 12px 14px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+  padding: 12px 14px; font-family: 'Geist', sans-serif; font-size: 14px;
   outline: none; width: 100%; appearance: none;
   transition: border-color .18s, box-shadow .18s;
 }
@@ -555,7 +546,7 @@ select option { background: #111; }
 .btn-submit {
   width: 100%; padding: 14px; margin-top: 8px;
   background: var(--green); color: var(--ink); border: none; border-radius: var(--r);
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600;
+  font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 600;
   cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
   transition: opacity .18s, transform .15s, box-shadow .2s;
 }
@@ -566,7 +557,7 @@ select option { background: #111; }
 footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--rule); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
 .footer-brand-logo {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800;
+  font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 800;
   color: var(--off-white); margin-bottom: 14px; letter-spacing: .3px;
   display: flex; align-items: center; gap: 9px;
 }
@@ -577,7 +568,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
   width: 32px; height: 32px; border-radius: 7px;
   background: transparent; border: 1px solid var(--rule);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700;
+  font-family: 'Geist', sans-serif; font-size: 10px; font-weight: 700;
   color: var(--muted); text-decoration: none; transition: all .18s;
 }
 .fsoc:hover { border-color: var(--green-line); color: var(--green); }
@@ -589,11 +580,6 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
 .footer-copy { font-size: 12px; color: var(--faint); }
 .footer-copy a { color: var(--green); text-decoration: none; transition: opacity .18s; }
 .footer-copy a:hover { opacity: .75; }
-.footer-wku {
-  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--green); border: 1px solid var(--green-line);
-  padding: 5px 11px; border-radius: 4px;
-}
 
 /* ── ANIMATIONS ── */
 @keyframes fadeup { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
@@ -690,8 +676,6 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
         <div class="hcard-val">Available this week</div>
       </div>
     </div>
-    <div class="hero-badge">
-      <div class="hbadge-l">WKU Affiliated</div>
       <div class="hbadge-v">World Kickboxing<br>& Karate Union</div>
     </div>
   </div>
@@ -704,14 +688,12 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
     <span class="marquee-item">Personal Training<span class="marquee-sep"></span></span>
     <span class="marquee-item">Juniors Programme<span class="marquee-sep"></span></span>
     <span class="marquee-item">Free First Session<span class="marquee-sep"></span></span>
-    <span class="marquee-item">WKU Belt Gradings<span class="marquee-sep"></span></span>
     <span class="marquee-item">Twickenham &amp; Richmond<span class="marquee-sep"></span></span>
     <span class="marquee-item">Sam Aminian &amp; Liz Bollinger<span class="marquee-sep"></span></span>
     <span class="marquee-item">Muay Thai<span class="marquee-sep"></span></span>
     <span class="marquee-item">Personal Training<span class="marquee-sep"></span></span>
     <span class="marquee-item">Juniors Programme<span class="marquee-sep"></span></span>
     <span class="marquee-item">Free First Session<span class="marquee-sep"></span></span>
-    <span class="marquee-item">WKU Belt Gradings<span class="marquee-sep"></span></span>
     <span class="marquee-item">Twickenham &amp; Richmond<span class="marquee-sep"></span></span>
     <span class="marquee-item">Sam Aminian &amp; Liz Bollinger<span class="marquee-sep"></span></span>
   </div>
@@ -726,7 +708,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=700&q=82&fit=crop" alt="Muay Thai pad work" loading="lazy">
         </div>
         <div class="img-accent">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop" alt="Group training" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80&fit=crop" alt="Group training" loading="lazy">
         </div>
         <div class="img-pill">
           <div class="pill-n">★ 5.0</div>
@@ -741,10 +723,10 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <br><br>
           Welcoming. Authentic. Results-driven. Whether you've never thrown a punch or you've competed for years, you belong here.
         </p>
+        <p style="font-size:12px;color:var(--muted);margin:-10px 0 22px;letter-spacing:.1px;">✦&nbsp; WKU (World Kickboxing &amp; Karate Union) affiliated coaches</p>
         <ul class="check-list reveal d3">
           <li class="check-item"><div class="check-icon">✓</div>Authentic Muay Thai — not watered-down kickboxing</li>
           <li class="check-item"><div class="check-icon">✓</div>Dedicated junior sessions for kids of all ages</li>
-          <li class="check-item"><div class="check-icon">✓</div>Official WKU belt gradings held on-site</li>
           <li class="check-item"><div class="check-icon">✓</div>Private 1-on-1 sessions with Sam or Liz personally</li>
           <li class="check-item"><div class="check-icon">✓</div>Nutrition guidance included with PT packages</li>
         </ul>
@@ -769,42 +751,36 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
     </div>
     <div class="class-grid reveal">
       <div class="class-card">
-        <div class="class-img"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=75&fit=crop" alt="Private Muay Thai" loading="lazy"></div>
+        <div class="class-img">🥊</div>
         <div class="class-num">01</div>
         <div class="class-title">Private Muay Thai</div>
         <p class="class-desc">One-to-one with Sam or Liz — fully focused on your goals, your technique, your pace. The fastest way to improve.</p>
         <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">1-on-1</span></div><span class="c-arrow">→</span></div>
       </div>
       <div class="class-card">
-        <div class="class-img"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=75&fit=crop" alt="Group Classes" loading="lazy"></div>
+        <div class="class-img">👥</div>
         <div class="class-num">02</div>
         <div class="class-title">Group Classes</div>
         <p class="class-desc">High-energy pad work, combinations and conditioning alongside a community that pushes you further than training alone ever could.</p>
         <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">Community</span></div><span class="c-arrow">→</span></div>
       </div>
       <div class="class-card">
-        <div class="class-img"><img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=600&q=75&fit=crop" alt="Juniors" loading="lazy"></div>
+        <div class="class-img">🧒</div>
         <div class="class-num">03</div>
         <div class="class-title">Juniors Programme</div>
         <p class="class-desc">Safe, structured sessions building confidence, discipline and fitness in young people. Skills that carry into every corner of their lives.</p>
         <div class="class-foot"><div class="class-tags"><span class="ctag">Kids</span><span class="ctag">All ages</span></div><span class="c-arrow">→</span></div>
       </div>
       <div class="class-card">
-        <div class="class-img"><img src="https://images.unsplash.com/photo-1592072874949-a9c7b0c52d14?w=600&q=75&fit=crop" alt="Personal Training" loading="lazy"></div>
+        <div class="class-img">💪</div>
         <div class="class-num">04</div>
         <div class="class-title">Personal Training</div>
         <p class="class-desc">Goal-driven conditioning for weight loss, strength, or athletic performance. No Muay Thai required — just results.</p>
         <div class="class-foot"><div class="class-tags"><span class="ctag">All levels</span><span class="ctag">Goals-based</span></div><span class="c-arrow">→</span></div>
       </div>
+
       <div class="class-card">
-        <div class="class-img"><img src="https://images.unsplash.com/photo-1485872299829-c673f5194813?w=600&q=75&fit=crop" alt="Belt Gradings" loading="lazy"></div>
-        <div class="class-num">05</div>
-        <div class="class-title">WKU Belt Gradings</div>
-        <p class="class-desc">A clear progression pathway through the World Kickboxing & Karate Union system — held right here at Power Up.</p>
-        <div class="class-foot"><div class="class-tags"><span class="ctag">WKU</span><span class="ctag">All ages</span></div><span class="c-arrow">→</span></div>
-      </div>
-      <div class="class-card">
-        <div class="class-img"><img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=600&q=75&fit=crop" alt="Nutrition" loading="lazy"></div>
+        <div class="class-img">🍎</div>
         <div class="class-num">06</div>
         <div class="class-title">Nutrition Guidance</div>
         <p class="class-desc">Practical nutrition support included with PT packages. Eat to fuel your training, recover faster, and feel the difference.</p>
@@ -929,7 +905,6 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <li class="pf"><span class="pf-check">✓</span>Unlimited group classes</li>
           <li class="pf"><span class="pf-check">✓</span>All levels & disciplines</li>
           <li class="pf"><span class="pf-check">✓</span>Progress tracking</li>
-          <li class="pf"><span class="pf-check">✓</span>WKU grading eligibility</li>
           <li class="pf"><span class="pf-check">✓</span>Community access</li>
         </ul>
         <a href="#contact" class="btn-price btn-price-fill">Start This Month</a>
@@ -999,10 +974,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <div class="faq-q">Where exactly are you based?<span class="faq-icon">+</span></div>
           <div class="faq-answer">We're at <strong>156 Heath Road, Twickenham, TW1</strong>, serving members from across Twickenham, Teddington, Richmond, and the surrounding area. Get in touch and we'll send you full directions and parking info.</div>
         </div>
-        <div class="faq-item">
-          <div class="faq-q">What are the WKU belt gradings?<span class="faq-icon">+</span></div>
-          <div class="faq-answer">The World Kickboxing & Karate Union (WKU) is one of the sport's leading governing bodies. <strong>We're fully affiliated</strong>, meaning your progress is formally recognised through an internationally respected grading system — held on-site at Power Up, for all ages.</div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -1036,7 +1008,7 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <div class="c-detail reveal d1"><div class="c-detail-icon">📍</div><div><div class="c-detail-label">Location</div><div class="c-detail-val">156 Heath Road, Twickenham, TW1</div></div></div>
           <div class="c-detail reveal d2"><div class="c-detail-icon">📞</div><div><div class="c-detail-label">Phone</div><div class="c-detail-val"><a href="tel:07378841381">07378 841381</a> / <a href="tel:07460364200">07460 364200</a></div></div></div>
           <div class="c-detail reveal d3"><div class="c-detail-icon">✉️</div><div><div class="c-detail-label">Email</div><div class="c-detail-val"><a href="mailto:hello@power-up.fit">hello@power-up.fit</a></div></div></div>
-          <div class="c-detail reveal d4"><div class="c-detail-icon">📱</div><div><div class="c-detail-label">Instagram</div><div class="c-detail-val"><a href="https://instagram.com/powerupgymuk" target="_blank">@powerupgymuk</a></div></div></div>
+          <div class="c-detail reveal d4"><div class="c-detail-icon">📱</div><div><div class="c-detail-label">Instagram</div><div class="c-detail-val"><a href="https://www.instagram.com/powerup.1/" target="_blank">@powerup.1</a></div></div></div>
         </div>
       </div>
       <div class="c-form reveal d2">
@@ -1056,7 +1028,6 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
             <option>Group Classes</option>
             <option>Juniors Programme</option>
             <option>Personal Training</option>
-            <option>WKU Belt Grading Info</option>
             <option>Not sure yet — just want to try it</option>
           </select>
         </div>
@@ -1079,8 +1050,8 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
         </div>
         <p class="footer-tagline">Authentic Muay Thai & personal training for all ages. Founded by Sam Aminian & Liz Bollinger in Twickenham.</p>
         <div class="footer-socials">
-          <a href="https://instagram.com/powerupgymuk" target="_blank" class="fsoc">IG</a>
-          <a href="#" class="fsoc">FB</a>
+          <a href="https://www.instagram.com/powerup.1/" target="_blank" class="fsoc">IG</a>
+          <a href="https://www.facebook.com/people/POWER-UP/100063469844286/" target="_blank" rel="noopener" class="fsoc">FB</a>
         </div>
       </div>
       <div>
@@ -1090,7 +1061,6 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
           <li><a href="#classes">Group Classes</a></li>
           <li><a href="#classes">Juniors Programme</a></li>
           <li><a href="#classes">Personal Training</a></li>
-          <li><a href="#classes">WKU Belt Gradings</a></li>
         </ul>
       </div>
       <div>
@@ -1114,7 +1084,6 @@ footer { background: #020202; padding: 64px 0 30px; border-top: 1px solid var(--
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">© 2025 Power Up Gym, Twickenham. All rights reserved. · Website by <a href="https://silvercode.uk" target="_blank">Silver Code Automation</a></div>
-      <div class="footer-wku">WKU Affiliated</div>
     </div>
   </div>
 </footer>
